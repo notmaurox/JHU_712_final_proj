@@ -14,11 +14,8 @@ def main():
 
     mvc = MicroVaderConnect(
         """
-        this literally doesnt matter I am just doing this bc I couldnt get 
-        fucking ajax to wait for my python script to finish before moving
-        on so I had to split the microservice interactions with seperate calls
-        instead of just waiting for the job to finish before continuing on with
-        the ajax sucess body
+        N/A, all that's needed for this is a job ID as sequence was submitted
+        previously via web page
         """,
         "see above"
     )
