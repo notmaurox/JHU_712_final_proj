@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>VADR runner</title>
+    <link rel="stylesheet" type="text/css" href="css/vadr_frontend.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/start_run.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body id="main">
+	<h1>Submit sequence to VADR</h1>
+    <form name="start_run" id="start_run" action="">
+        <input name="user_email" id="user_email" value="" autofocus="autofocus" placeholder="Enter an email address"/>
+        <input name="sequence_name" id="sequence_name" value="" placeholder="Enter a sequence name"/>
+        <input name="sequence_dna" id="sequence_dna" placeholder="Enter a sequence"/>
+        <input name="submit" type="submit" id="submit" value="submit">
+    </form>
+    <div id='in_progress' style="display:none">
+        <p>Your job has been submitted with process ID...</p>
+        <p><span id='job_id'>0</span></p>
+        <p>Please wait for the check status button to appear below...</p>
+        <div id="countdown"></div>
+        <p></p>
+        <button id="status_button" type="button" style="display:none">click me to check job status</button>
+    </div>
+    <section id='results'>
+        <p>VADR sequence validation status: <span id='vadr_status'>0</span></p>
+        <p>Model used: <span id='model_used'>0</span></p>
+        <p>Sequence length: <span id='seq_length'>0</span></p>
+        
+        <table>
+            <thead>
+            <tr>
+                <td>Feature type</td>
+                <td>Name</td>
+                <td>Start position</td>
+                <td>End position</td>
+                <td>Feature sequence coordinates</td>
+                <td>VADR alerts</td>
+            </tr>
+            </thead>
+            <tbody>
+                <!-- this will be filled in by javascript when there are results -->
+            </tbody>
+    </section>
+</body>
+
+</html>
