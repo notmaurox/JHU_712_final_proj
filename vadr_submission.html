@@ -2,7 +2,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>VADR runner</title>
+	<title>Devastator (VADR runner)</title>
     <link rel="stylesheet" type="text/css" href="css/vadr_frontend.css"/>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/start_run.js"></script>
@@ -47,7 +47,7 @@
                 </tbody>
             </table>
             <table>
-                <p>Sequence annotations for run <span id='past_run_annotation_id'>0</span></p>
+                <h2>Sequence annotations for run <span id='past_run_annotation_id'>0</span></h2>
                 <thead>
                 <tr>
                     <td>Feature type</td>
@@ -82,12 +82,14 @@
             <h2 id="job_finished" style="display:none">Your job has finished!</h2>
         </div>
         <section id='results'>
+            <h1>VADR results </h1>
             <p>VADR sequence validation status: <span id='vadr_status'>0</span></p>
             <p>Model used: <span id='model_used'>0</span></p>
             <p>Sequence length: <span id='seq_length'>0</span></p>
             
             <table>
                 <thead>
+                <h2>Sequence annotations</h2>
                 <tr>
                     <td>Feature type</td>
                     <td>Name</td>
