@@ -25,6 +25,7 @@ function submitRun( term ) {
         success: function(data, textStatus, jqXHR) {
             $('#in_progress').show();
             $('#status_button').hide();
+            $('#job_finished').hide();
             populateInProgress(data);
         },
         error: function(jqXHR, textStatus, errorThrown){
@@ -63,7 +64,7 @@ function populateInProgress( data ) {
     $('#job_id').text( data.job_id );
     $("#status_button").hide();
     window.job_id = data.job_id;
-    var timeleft = 10;
+    var timeleft = 20;
     var downloadTimer = setInterval(function(){
         if(timeleft <= 0){
             clearInterval(downloadTimer);
@@ -75,7 +76,7 @@ function populateInProgress( data ) {
             $("#status_button").hide();
         }
         timeleft -= 1;
-    }, 1500);
+    }, 1000);
 }
 
 // this processes a passed JSON structure representing gene matches and draws it
