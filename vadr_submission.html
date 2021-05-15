@@ -22,9 +22,9 @@
 <body id="main">
     <div id="past_run_div" style="display:none">
         <h1>Get your past VADR runs</h1>
-        <form name="get_past_runs" id="get_past_runs" action="">
-            <input type="text" name="past_user_email" id="past_user_email" value="" autofocus="autofocus" placeholder="Enter an email address"/>
-            <input name="past_run_submit" type="submit" id="past_run_submit" value="get runs">
+        <form name="get_past_runs" id="get_past_runs" action="" required>
+            <input type="text" name="past_user_email" id="past_user_email" value="" autofocus="autofocus" placeholder="Enter an email address" required/>
+            <input name="past_run_submit" type="submit" id="past_run_submit" value="get runs" required>
         </form>
         <section id='past_runs_body' style="display:none">
             <form name="get_past_run_annotation" id="get_past_runs_annotation" action="">
