@@ -1,51 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+
 <head>
 	<meta charset="utf-8" />
 	<title>VADR runner</title>
-    <link rel="stylesheet" type="text/css" href="css/vadr_frontend.css" />
+    <link rel="stylesheet" type="text/css" href="css/vadr_frontend.css"/>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/start_run.js"></script>
+    <script type="text/javascript" src="js/setup_nav.js"></script>
+    <script type="text/javascript" src="js/past_runs.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <html lang="en">
 </head>
 
+<div class="topnav", id="topnav">
+    <p id="vadr_welcome">Welcome to VADR</p>
+    <a id="new_run">Submit New Run</a>
+    <a id="past_run">View Past Runs</a>
+</div>
+
 <body id="main">
-	<h1>Submit sequence to VADR</h1>
-    <form name="start_run" id="start_run" action="">
-        <input name="user_email" id="user_email" value="" autofocus="autofocus" placeholder="Enter an email address"/>
-        <input name="sequence_name" id="sequence_name" value="" placeholder="Enter a sequence name"/>
-        <input name="sequence_dna" id="sequence_dna" placeholder="Enter a sequence"/>
-        <input name="submit" type="submit" id="submit" value="submit">
-    </form>
-    <div id='in_progress' style="display:none">
-        <p>Your job has been submitted with process ID...</p>
-        <p><span id='job_id'>0</span></p>
-        <p>Please wait for the check status button to appear below...</p>
-        <div id="countdown"></div>
-        <p></p>
-        <button id="status_button" type="button" style="display:none">click me to check job status</button>
+    <div id="past_run_div" style="display:none">
+        <h1>Get your past VADR runs</h1>
+        <form name="get_past_runs" id="get_past_runs" action="">
+            <input type="text" name="past_user_email" id="past_user_email" value="" autofocus="autofocus" placeholder="Enter an email address"/>
+            <input name="past_run_submit" type="submit" id="past_run_submit" value="get runs">
+        </form>
+        <section id='past_runs_body' style="display:none">
+            <table>
+                <thead>
+                <tr>
+                    <td>Run ID</td>
+                    <td>Sequence Name</td>
+                    <td>Sequence Length</td>
+                    <td>VADR Status</td>
+                    <td>Sequence</td>
+                </tr>
+                </thead>
+                <tbody id="past_runs_table_body">
+                    <!-- this will be filled in by javascript when there are results -->
+                </tbody>
+            </table>
+        </section>
     </div>
-    <section id='results'>
-        <p>VADR sequence validation status: <span id='vadr_status'>0</span></p>
-        <p>Model used: <span id='model_used'>0</span></p>
-        <p>Sequence length: <span id='seq_length'>0</span></p>
-        
-        <table>
-            <thead>
-            <tr>
-                <td>Feature type</td>
-                <td>Name</td>
-                <td>Start position</td>
-                <td>End position</td>
-                <td>Feature sequence coordinates</td>
-                <td>VADR alerts</td>
-            </tr>
-            </thead>
-            <tbody>
-                <!-- this will be filled in by javascript when there are results -->
-            </tbody>
-    </section>
+    <div id="new_run_div">
+        <h1>Submit sequence to VADR</h1>
+        <form name="start_run" id="start_run" action="" required>
+            <input name="user_email" id="user_email" value="" autofocus="autofocus" placeholder="Enter an email address" required/>
+            <input name="sequence_name" id="sequence_name" value="" placeholder="Enter a sequence name" required/>
+            <input name="sequence_dna" id="sequence_dna" placeholder="Enter a sequence" required/>
+            <input name="submit" type="submit" id="submit" value="submit sequence">
+        </form>
+        <div id='in_progress' style="display:none">
+            <p>Your job has been submitted with process ID...</p>
+            <p><span id='job_id'>0</span></p>
+            <p>Please wait for the check status button to appear below...</p>
+            <div id="countdown"></div>
+            <p></p>
+            <button id="status_button" type="button" style="display:none">click me to check job status</button>
+            <h2 id="job_finished" style="display:none">Your job has finished!</h2>
+        </div>
+        <section id='results'>
+            <p>VADR sequence validation status: <span id='vadr_status'>0</span></p>
+            <p>Model used: <span id='model_used'>0</span></p>
+            <p>Sequence length: <span id='seq_length'>0</span></p>
+            
+            <table>
+                <thead>
+                <tr>
+                    <td>Feature type</td>
+                    <td>Name</td>
+                    <td>Start position</td>
+                    <td>End position</td>
+                    <td>Feature sequence coordinates</td>
+                    <td>VADR alerts</td>
+                </tr>
+                </thead>
+                <tbody id="results_table">
+                    <!-- this will be filled in by javascript when there are results -->
+                </tbody>
+            </table>
+        </section>
+    </div>
 </body>
+
+<script>
+    setupTopNav();
+</script>
 
 </html>
