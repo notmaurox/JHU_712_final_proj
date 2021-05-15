@@ -27,7 +27,12 @@
             <input name="past_run_submit" type="submit" id="past_run_submit" value="get runs">
         </form>
         <section id='past_runs_body' style="display:none">
+            <form name="get_past_run_annotation" id="get_past_runs_annotation" action="">
+                <input type="text" name="past_run_id" id="past_run_id" value="" autofocus="autofocus" placeholder="Enter a run ID"/>
+                <input name="past_run_annotation_submit" type="submit" id="past_run_annotation_submit" value="get annotations">
+            </form>
             <table>
+                <h2> Your past runs... </h2>
                 <thead>
                 <tr>
                     <td>Run ID</td>
@@ -38,6 +43,22 @@
                 </tr>
                 </thead>
                 <tbody id="past_runs_table_body">
+                    <!-- this will be filled in by javascript when there are results -->
+                </tbody>
+            </table>
+            <table>
+                <p>Sequence annotations for run <span id='past_run_annotation_id'>0</span></p>
+                <thead>
+                <tr>
+                    <td>Feature type</td>
+                    <td>Name</td>
+                    <td>Start position</td>
+                    <td>End position</td>
+                    <td>Feature sequence coordinates</td>
+                    <td>VADR alerts</td>
+                </tr>
+                </thead>
+                <tbody id="past_run_annotations_table_body">
                     <!-- this will be filled in by javascript when there are results -->
                 </tbody>
             </table>

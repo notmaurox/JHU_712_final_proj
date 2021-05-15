@@ -11,10 +11,10 @@ def main():
         print("Content-Type: application/json\n\n")
 
         form = cgi.FieldStorage()
-        user_email = form.getvalue('user_email')
+        run_id = form.getvalue('run_id')
 
         svr = Saver()
-        results = svr.get_user_jobs(user_email)
+        results = svr.get_past_run_annotations(run_id)
         print(json.dumps(results))
     except Exception as e:
         print(str(e))

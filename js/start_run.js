@@ -82,6 +82,7 @@ function populateInProgress( data ) {
 // this processes a passed JSON structure representing gene matches and draws it
 //  to the result table
 function processResults( data ) {
+    $("#results_table").empty();
     // set the span that lists the match count
     $('#vadr_status').text( data.vadr_status );
     if (!data.vadr_status.includes("JOB NOT FINISHED")) {

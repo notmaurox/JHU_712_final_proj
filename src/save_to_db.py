@@ -80,6 +80,30 @@ class Saver:
             )
         return results
 
+    def get_past_run_annotations(self, run_id):
+        qry = """
+            SELECT * FROM sequence_features WHERE run_id=%s;
+        """
+        self.curs.execute(
+            qry,
+            [run_id]
+        )
+        results = {
+            "job_id": run_id,
+            "sequence_annotations": []
+        }
+        for item in self.curs:
+            results["sequence_annotations"].append(
+                {
+                    "feature_type": item[2],
+                    "feature_name": item[3],
+                    "feature_start": item[4],
+                    "feature_end": item[5],
+                    "seq_coords": item[6],
+                    "alerts": item[7],
+                }
+            )
+        return results
 
 
 if __name__ == "__main__":
@@ -90,4 +114,5 @@ if __name__ == "__main__":
     # svr.save_sequence_annotations(run_id,
     #     [{'type': 'gene', 'name': 'ORF1ab', 'start': '266', 'end': '21555', 'seq_coords': '266..21555:+', 'alerts': '-'}]
     # )
-    svr.get_user_jobs("mauro.antoine.chavez%40gmail.com")
+    #svr.get_user_jobs("mauro.antoine.chavez%40gmail.com")
+    svr.get_past_run_annotations(48877336)
